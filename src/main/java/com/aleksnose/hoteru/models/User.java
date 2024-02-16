@@ -1,16 +1,16 @@
 package com.aleksnose.hoteru.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Data;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = User.NAME)
 public class User {
+    public static final String NAME = "User";
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer Id;
-    private String name;
-    private String surname;
+    private String Name;
+    private String Surname;
+    private Boolean IsWorker;
 }

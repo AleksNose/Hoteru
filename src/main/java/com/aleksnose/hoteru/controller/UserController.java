@@ -13,14 +13,13 @@ public class UserController {
     private UserService userService;
     private IRepository repository;
 
-    public UserController(UserService userService)
-    {
+    public UserController(UserService userService, IRepository repository) {
         this.userService = userService;
+        this.repository = repository;
     }
 
     @GetMapping("/test")
-    public String test()
-    {
+    public String test() {
         return userService.test();
     }
 
