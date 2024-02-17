@@ -2,9 +2,9 @@
 
 **Easily Manage Your Hotel:** Booking, Reservation, and Management Application
 
-<img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
-<img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white">
+![Spring][spring-shield]
+![React][react-shield]
+![Docker][docker-shield]
 
 ---
 
@@ -29,3 +29,7 @@ There is still a long way to go for the project - At this point it is difficult 
 - [**Aleksandra Nosińska**](aleks.nosinska@gmail.com
 ) - Java Backend Developer
 - [**Hubert Śliwiński**](hoteru@watchdog.services) - DevOps Engineer (*For the purposes of the project: Frontend Developer*)
+
+[spring-shield]: https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white
+[react-shield]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[docker-shield]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
