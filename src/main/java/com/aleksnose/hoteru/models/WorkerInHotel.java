@@ -15,10 +15,15 @@ public class WorkerInHotel {
     private Integer IdUser;
     private boolean IsAdmin;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "Id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="IdUser", referencedColumnName = "Id", insertable = false, updatable = false)
     private User user;
 
     public User getUser() {
         return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

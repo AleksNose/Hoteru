@@ -21,6 +21,10 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "IdUser")
     private Set<WorkerInHotel> workersInHotels;
 
+    public void setWorkersInHotels(Set<WorkerInHotel> workersInHotels) {
+        this.workersInHotels = workersInHotels;
+    }
+
     public Set<WorkerInHotel> getWorkersInHotels() {
         return workersInHotels;
     }
