@@ -1,5 +1,6 @@
 package com.aleksnose.hoteru.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,12 +14,13 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer Id;
+    private Long Id;
     private String Name;
     private String Surname;
     private Boolean IsWorker;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IdUser")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonIgnore
     private Set<WorkerInHotel> workersInHotels;
 
     public void setWorkersInHotels(Set<WorkerInHotel> workersInHotels) {
@@ -27,17 +29,5 @@ public class User {
 
     public Set<WorkerInHotel> getWorkersInHotels() {
         return workersInHotels;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public String getSurname() {
-        return Surname;
-    }
-
-    public Boolean getWorker() {
-        return IsWorker;
     }
 }

@@ -10,20 +10,11 @@ import lombok.Setter;
 public class WorkerInHotel {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer IdWorkerInHotel;
+    private Long IdWorkerInHotel;
     private Integer IdHotel;
-    private Integer IdUser;
     private boolean IsAdmin;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="IdUser", referencedColumnName = "Id", insertable = false, updatable = false)
+    @JoinColumn(name="user_Id")
     private User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
