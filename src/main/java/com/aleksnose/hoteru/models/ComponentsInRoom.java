@@ -1,9 +1,6 @@
 package com.aleksnose.hoteru.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +11,14 @@ public class ComponentsInRoom {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer Id;
-    private Integer IdRoom;
-    private Integer IdComponent;
+
+    @MapKey(name = "IdTargetRoom")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="IdTargetRoom")
+    private TargetRoom targetRoom;
+
+    @MapKey(name = "IdComponent")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="IdComponent")
+    private Component component;
 }

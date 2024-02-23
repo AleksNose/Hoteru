@@ -1,9 +1,6 @@
 package com.aleksnose.hoteru.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDate;
@@ -15,8 +12,16 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer Id;
-    private Integer IdUser;
     private LocalDate DateFrom;
     private LocalDate DateTo;
-    private Integer IdRoom;
+
+    @MapKey(name = "IdUser")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="IdUser")
+    private User user;
+
+    @MapKey(name = "IdRoom")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="IdRoom")
+    private Room room;
 }

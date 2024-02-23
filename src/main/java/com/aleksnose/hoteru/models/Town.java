@@ -1,9 +1,6 @@
 package com.aleksnose.hoteru.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +11,10 @@ public class Town {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer Id;
-    private Integer IdCountry;
     private String Name;
+
+    @MapKey(name = "IdCountry")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="IdCountry")
+    private Country country;
 }

@@ -23,9 +23,9 @@ public class User {
     @JsonIgnore
     private Set<WorkerInHotel> workersInHotels;
 
-    public void setWorkersInHotels(Set<WorkerInHotel> workersInHotels) {
-        this.workersInHotels = workersInHotels;
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Reservation> reservations;
 
     public Set<WorkerInHotel> getWorkersInHotels() {
         return workersInHotels;
