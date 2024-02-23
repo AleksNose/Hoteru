@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping(path="/worker/{id}")
-    public Set<WorkerInHotel> getWorker(@PathVariable long id) throws InvalidClassException {
+    public Set<WorkerInHotel> getWorker(@PathVariable Integer id) throws InvalidClassException {
 
         Optional<User> user = repository.findById(id);
 
