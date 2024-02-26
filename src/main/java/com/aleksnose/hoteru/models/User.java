@@ -12,7 +12,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long Id;
+    private Integer Id;
     private String Name;
     private String Surname;
     private Boolean IsWorker;
