@@ -30,19 +30,17 @@ public class Hotel {
     @JsonIgnore
     private Set<WorkerInHotel> workerInHotels;
 
-    private Set<TargetRoom> getFreeTargetRooms(LocalDate dateFrom, LocalDate dateTo, int countPeople) {
+    public Set<TargetRoom> getFreeTargetRooms(LocalDate dateFrom, LocalDate dateTo, int countPeople) {
         return targetRooms.stream()
                 .filter(targetRoom -> targetRoom.getCountFreeRooms(dateFrom, dateTo) > 0 && targetRoom.getCountPeople() == countPeople)
                 .collect(Collectors.toSet());
     }
 
-    private Set<User> getWorkersData()
-    {
+    public Set<User> getWorkersData() {
         return workerInHotels.stream().map(WorkerInHotel::getUser).collect(Collectors.toSet());
     }
 
-    private User getAdmin()
-    {
+    public User getAdmin() {
         return workerInHotels.stream().filter(WorkerInHotel::isIsAdmin).map(WorkerInHotel::getUser).findAny().get();
     }
 }

@@ -24,12 +24,4 @@ public class Reservation {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="IdRoom")
     private Room room;
-
-    public LocalDate getDateFrom() {
-        return DateFrom;
-    }
-
-    public LocalDate getDateTo() {
-        return DateTo;
-    }
 }
