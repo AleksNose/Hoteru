@@ -2,11 +2,11 @@ package com.aleksnose.hoteru.service;
 
 import com.aleksnose.hoteru.models.*;
 import com.aleksnose.hoteru.repository.HotelRepository;
+import org.mapstruct.control.MappingControl;
 import org.springframework.stereotype.Service;
 
-import java.io.InvalidClassException;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class HotelService {
@@ -16,32 +16,27 @@ public class HotelService {
         this.repository = repository;
     }
 
-    public Hotel getHotelById(Integer id) throws InvalidClassException {
-
+    public Hotel getHotelById(Integer id) {
         var hotel = repository.findById(id);
-        if (hotel.isPresent())
-        {
-            return hotel.get();
-        }
-
-        throw new InvalidClassException("Hotel isn't present");
+        return hotel.get();
     }
 
-    public Set<TargetRoom> getTargetRoomsByHotelId(Integer id) throws InvalidClassException {
+    public Set<TargetRoom> getTargetRoomsByHotelId(Integer id) {
         var hotel = getHotelById(id);
         return hotel.getTargetRooms();
     }
 
     public Set<Hotel> getWorkingHotelsBy(User user) {
-        if (!user.getIsWorker()) {
-            System.out.println("user isnt worker");
-        }
+        return user.getWorkersInHotels().stream().map(WorkerInHotel::getHotel).collect(Collectors.toSet());
+    }
 
-        Set<Hotel> hotels = new HashSet<>();
-        for (var workersInHotel : user.getWorkersInHotels()) {
-            hotels.add(repository.findById(workersInHotel.getId()).get());
-        }
+    public Set<User> getWorkersByHotel(Integer id) {
+        var hotel = getHotelById(id);
+        return hotel.getWorkersData();
+    }
 
-        return hotels;
+    public User getAdminByHotel(Integer id) {
+        var hotel = getHotelById(id);
+        return hotel.getAdmin();
     }
 }
