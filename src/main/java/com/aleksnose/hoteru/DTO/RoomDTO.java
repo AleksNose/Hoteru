@@ -1,6 +1,11 @@
 package com.aleksnose.hoteru.DTO;
 
-public class RoomDto {
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class RoomDTO {
     private Integer Id;
     private int NrRoom;
     private Integer IdTargetRoom;

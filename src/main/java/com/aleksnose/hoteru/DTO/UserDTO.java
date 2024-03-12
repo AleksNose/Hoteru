@@ -1,6 +1,11 @@
 package com.aleksnose.hoteru.DTO;
 
-public class UserDto {
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class UserDTO {
     private Integer Id;
     private String Name;
     private String Surname;
